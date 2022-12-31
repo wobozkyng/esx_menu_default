@@ -1,3 +1,11 @@
+
+# Description
+Modified version of original esx_menu_default resource.
+- Added pageup and pagedown control feature.
+
+# esx_menu_default
+- Credit: [Original Repository](https://github.com/esx-framework/esx-legacy)
+
 <h1 align='center'>[ESX] Menu Defualt</a></h1><p align='center'><b><a href='https://discord.esx-framework.org/'>Discord</a> - <a href='https://esx-framework.org/'>Website</a> - <a href='https://docs.esx-framework.org/legacy/installation'>Documentation</a></b></h5>
 
 A defualt List type menu for ESX.
