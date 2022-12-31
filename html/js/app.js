@@ -283,6 +283,82 @@
             break
           }
 
+          case 'PAGEUP': {
+            let focused = ESX_MENU.getFocused()
+
+            if (typeof focused != 'undefined') {
+              let menu = ESX_MENU.opened[focused.namespace][focused.name]
+              let pos = ESX_MENU.pos[focused.namespace][focused.name]
+
+              if (pos > 4) {
+                ESX_MENU.pos[focused.namespace][focused.name]-=5
+              } else if (pos <= 4 && pos > 0) {
+                ESX_MENU.pos[focused.namespace][focused.name] = 0
+              } else {
+                ESX_MENU.pos[focused.namespace][focused.name] =
+                  menu.elements.length - 1
+              }
+
+              let elem =
+                menu.elements[ESX_MENU.pos[focused.namespace][focused.name]]
+
+              for (let i = 0; i < menu.elements.length; i++) {
+                if (i == ESX_MENU.pos[focused.namespace][focused.name]) {
+                  menu.elements[i].selected = true
+                } else {
+                  menu.elements[i].selected = false
+                }
+              }
+
+              ESX_MENU.change(focused.namespace, focused.name, elem)
+              ESX_MENU.render()
+
+              $('#menu_' + focused.namespace + '_' + focused.name)
+                .find('.menu-item.selected')[0]
+                .scrollIntoView()
+            }
+
+            break
+          }
+
+          case 'PAGEDOWN': {
+            let focused = ESX_MENU.getFocused()
+
+            if (typeof focused != 'undefined') {
+              let menu = ESX_MENU.opened[focused.namespace][focused.name]
+              let pos = ESX_MENU.pos[focused.namespace][focused.name]
+              let length = menu.elements.length
+
+              if (pos < length - 6) {
+                ESX_MENU.pos[focused.namespace][focused.name]+=5
+              } else if (pos >= length - 6 && pos < length - 1) {
+                ESX_MENU.pos[focused.namespace][focused.name] = length - 1
+              } else {
+                ESX_MENU.pos[focused.namespace][focused.name] = 0
+              }
+
+              let elem =
+                menu.elements[ESX_MENU.pos[focused.namespace][focused.name]]
+
+              for (let i = 0; i < menu.elements.length; i++) {
+                if (i == ESX_MENU.pos[focused.namespace][focused.name]) {
+                  menu.elements[i].selected = true
+                } else {
+                  menu.elements[i].selected = false
+                }
+              }
+
+              ESX_MENU.change(focused.namespace, focused.name, elem)
+              ESX_MENU.render()
+
+              $('#menu_' + focused.namespace + '_' + focused.name)
+                .find('.menu-item.selected')[0]
+                .scrollIntoView()
+            }
+
+            break
+          }
+
           case 'LEFT': {
             let focused = ESX_MENU.getFocused()
 

@@ -96,6 +96,22 @@ CreateThread(function()
                 GUI.Time = GetGameTimer()
             end
 
+            if IsControlPressed(0, 10) and IsUsingKeyboard(0) and (GetGameTimer() - GUI.Time) > 200 then
+                SendNUIMessage({
+                    action = 'controlPressed',
+                    control = 'PAGEUP'
+                })
+                GUI.Time = GetGameTimer()
+            end
+
+            if IsControlPressed(0, 11) and IsUsingKeyboard(0) and (GetGameTimer() - GUI.Time) > 200 then
+                SendNUIMessage({
+                    action = 'controlPressed',
+                    control = 'PAGEDOWN'
+                })
+                GUI.Time = GetGameTimer()
+            end
+
             if IsControlPressed(0, 174) and IsUsingKeyboard(0) and (GetGameTimer() - GUI.Time) > 200 then
                 SendNUIMessage({
                     action = 'controlPressed',
